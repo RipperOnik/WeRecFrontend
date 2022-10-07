@@ -2,6 +2,7 @@ import * as React from "react";
 import Tag from "../subcomponents/Tag";
 import Rating from "../subcomponents/cards/Rating";
 import { useAppSelector } from "../../globalState/hooks";
+import { Link } from "react-router-dom";
 
 function DetailedPage() {
   const props = useAppSelector((state) => state.currentDetailedPage);
@@ -13,7 +14,7 @@ function DetailedPage() {
       {props.tags.map((tag, id) => {
         return <Tag text={tag} key={id} />;
       })}
-      <div style={{margin: "30px"}}>
+      <div style={{ margin: "30px" }}>
         <Rating
           averageRating={props.averageRating ?? 0}
           totalReviewCount={props.totalReviewCount ?? 0}
@@ -21,13 +22,15 @@ function DetailedPage() {
       </div>
 
       <div className="d-flex justify-content-center">
-        <button type="button" className="btn custom-button">
-          GET BOT
+        <button type="button" className="btn custom-button" style={{margin: "20px 30px"}}>
+          GET UNIQUE CODE
         </button>
         {props.isMyCard && (
-          <button type="button" className="btn custom-button">
-            MODIFY
-          </button>
+          <Link to={`/configuration/${props.id}`}>
+            <button type="button" className="btn custom-button" style={{margin: "20px 30px"}}>
+              MODIFY
+            </button>
+          </Link>
         )}
       </div>
     </div>

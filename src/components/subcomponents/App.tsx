@@ -10,6 +10,7 @@ import Home from "../pages/Home";
 import Tabs from "./tabs/Tabs";
 
 import DetailedPage from "../pages/DetailedPage";
+import ConfigurationPage from "../pages/ConfigurationPage";
 
 import { TabItemsNames } from "../../resources/strings";
 import CardGroup from "./cards/CardGroup";
@@ -42,6 +43,10 @@ function App() {
           path: "/feed/:id",
           element: <DetailedPage />,
         },
+        {
+          path: "/configuration/:id",
+          element: <ConfigurationPage/>
+        }
         // {
         //   path: "/feed/:type",
         //   element: <CardGroup />,
