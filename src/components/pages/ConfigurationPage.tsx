@@ -2,15 +2,16 @@ import * as React from "react";
 import { useAppSelector, useAppDispatch } from "../../globalState/hooks";
 import { addFeed, editFeed } from "../../globalState/reducerActions";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface ConfigurationPage {
   action: "add" | "edit";
 }
 
 function ConfigurationPage(props: ConfigurationPage) {
-  const data = useAppSelector((state) => state.currentDetailedPage)
-  const myFeeds = useAppSelector((state) => state.myFeeds)
+  const data = useAppSelector((state) => state.currentDetailedPage);
+  const myFeeds = useAppSelector((state) => state.myFeeds);
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -46,6 +47,10 @@ function ConfigurationPage(props: ConfigurationPage) {
   }
 
   function addSourceLink() {
+    if (sourceLink.length === 0) {
+      alert("link should not be empty!");
+      return;
+    }
     if (sourceLinks.length > 0) {
       setSourceLinks([...sourceLinks, sourceLink]);
     } else {
@@ -190,41 +195,50 @@ function ConfigurationPage(props: ConfigurationPage) {
               </select>
             </div> */}
 
-            <Link to="/">
-              <button
-                type="submit"
-                className="btn custom-button"
-                style={{ margin: "20px 0" }}
-                onClick={() => {
-                    if(props.action === "add"){
-                        dispatch(
-                            addFeed({
-                              id: myFeeds.length,
-                              title: name,
-                              description: description,
-                              numberOfVideosPerRequest: numberOfVideosPerRequest,
-                              keyword: keyword,
-                              sourceLinks: sourceLinks,
-                            })
-                          );
-                    }
-                    else if(props.action === "edit"){
-                        dispatch(
-                            editFeed({
-                              id: data.id,
-                              title: name,
-                              description: description,
-                              numberOfVideosPerRequest: numberOfVideosPerRequest,
-                              keyword: keyword,
-                              sourceLinks: sourceLinks,
-                            })
-                          );
-                    }
-                }}
-              >
-                SAVE
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="btn custom-button"
+              style={{ margin: "20px 0" }}
+              onClick={() => {
+                if (
+                  name.length === 0 ||
+                  description.length === 0 ||
+                  numberOfVideosPerRequest === 0 ||
+                  keyword.length === 0 ||
+                  sourceLinks.length === 0
+                ) {
+                  alert("Fill out all the required fields");
+                  return;
+                }
+
+                if (props.action === "add") {
+                  dispatch(
+                    addFeed({
+                      id: myFeeds.length,
+                      title: name,
+                      description: description,
+                      numberOfVideosPerRequest: numberOfVideosPerRequest,
+                      keyword: keyword,
+                      sourceLinks: sourceLinks,
+                    })
+                  );
+                } else if (props.action === "edit") {
+                  dispatch(
+                    editFeed({
+                      id: data.id,
+                      title: name,
+                      description: description,
+                      numberOfVideosPerRequest: numberOfVideosPerRequest,
+                      keyword: keyword,
+                      sourceLinks: sourceLinks,
+                    })
+                  );
+                }
+                navigate("/");
+              }}
+            >
+              SAVE
+            </button>
           </form>
         </div>
 
