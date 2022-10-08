@@ -44,21 +44,13 @@ function App() {
           element: <DetailedPage />,
         },
         {
-          path: "/configuration/:id",
-          element: <ConfigurationPage/>
+          path: "/feed/configuration/edit/:id",
+          element: <ConfigurationPage action="edit"/>
+        },
+        {
+          path: "/feed/configuration/add",
+          element: <ConfigurationPage action="add"/>
         }
-        // {
-        //   path: "/feed/:type",
-        //   element: <CardGroup />,
-        // },
-        // {
-        //   path: "/dishes/:dish",
-        //   element: <div> <Tabs tabs={tabsDishes} path={"/dishes/"}/>  <CardGroup /> </div>
-        // },
-        // {
-        //   path: "/search/:query",
-        //   element: <CardGroup />
-        // }
 
       ],
     },

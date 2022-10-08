@@ -1,12 +1,12 @@
 import * as React from "react";
 import Rating from "./Rating";
-import DetailedPage from "../../interfaces/DetailedPage";
+import Feed from "../../interfaces/Feed";
 import { navigateToDetailedPage } from "../../../globalState/reducerActions";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../globalState/hooks";
 import Tag from "../Tag";
 
-function FoodCard(props: DetailedPage) {
+function FoodCard(props: Feed) {
   const dispatch = useAppDispatch();
   return (
     <div
@@ -20,13 +20,16 @@ function FoodCard(props: DetailedPage) {
             navigateToDetailedPage({
               id: props.id,
               title: props.title,
-              author: props.author,
-              averageRating: props.averageRating,
-              totalReviewCount: props.totalReviewCount,
+              // author: props.author,
+              // averageRating: props.averageRating,
+              // totalReviewCount: props.totalReviewCount,
               description: props.description,
-              visiiblity: props.visiiblity,
-              tags: props.tags,
-              isMyCard: props.isMyCard
+              numberOfVideosPerRequest: props.numberOfVideosPerRequest,
+              keyword: props.keyword,
+              sourceLinks: props.sourceLinks
+              // visiiblity: props.visiiblity,
+              // tags: props.tags,
+              // isMyCard: props.isMyCard
             })
           )
         }
@@ -42,21 +45,21 @@ function FoodCard(props: DetailedPage) {
           }}
         >
           <div className="card-body" style={{ whiteSpace: "normal" }}>
-            <div className="d-flex justify-content-between">
+            {/* <div className="d-flex justify-content-between">
               <div style={{ color: "grey" }}>{props.author}</div>
               {props.isMyCard && <div style={{ color: "grey" }}>{props.visiiblity}</div>}
-            </div>
+            </div> */}
             <h5
               className="card-title"
               style={{
-                height: "3rem",
+                // height: "2rem",
                 fontSize: "1rem",
                 flexGrow: "12",
               }}
             >
               {props.title}
             </h5>
-            <div className="scrollable">
+            {/* <div className="scrollable">
               {props.tags.map((tag, index) => {
                 return <Tag text={tag} key={index} />;
               })}
@@ -65,7 +68,7 @@ function FoodCard(props: DetailedPage) {
             <Rating
               averageRating={props.averageRating ?? 0}
               totalReviewCount={props.totalReviewCount ?? 0}
-            />
+            /> */}
           </div>
         </div>
       </Link>

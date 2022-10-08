@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {currentNavbarItemReducer, currentTabItemReducer, currentDetailedPageReducer} from "./reducerActions"
+import {currentNavbarItemReducer, currentTabItemReducer, currentDetailedPageReducer, myFeedsReducer} from "./reducerActions"
 
 export const store = configureStore({
   reducer: {
     currentNavbarItem: currentNavbarItemReducer,
     currentTabItem: currentTabItemReducer,
     currentDetailedPage: currentDetailedPageReducer,
+    myFeeds: myFeedsReducer
     // currentFeed: currentFeedReducer
 }})
 
