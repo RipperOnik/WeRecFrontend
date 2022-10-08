@@ -48,8 +48,12 @@ function ConfigurationPage(props: ConfigurationPage) {
 
   function addSourceLink() {
     if (sourceLink.length === 0) {
-      alert("link should not be empty!");
+      alert("link should not be empty!")
       return;
+    }
+    if(sourceLinks.includes(sourceLink)){
+      alert("Don't add the same link")
+      return
     }
     if (sourceLinks.length > 0) {
       setSourceLinks([...sourceLinks, sourceLink]);
