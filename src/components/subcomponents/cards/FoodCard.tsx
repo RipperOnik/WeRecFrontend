@@ -24,9 +24,9 @@ function FoodCard(props: Feed) {
               // averageRating: props.averageRating,
               // totalReviewCount: props.totalReviewCount,
               description: props.description,
-              numberOfVideosPerRequest: props.numberOfVideosPerRequest,
-              keyword: props.keyword,
-              sourceLinks: props.sourceLinks
+              // numberOfVideosPerRequest: props.numberOfVideosPerRequest,
+              keywords: props.keywords,
+              // sourceLinks: props.sourceLinks
               // visiiblity: props.visiiblity,
               // tags: props.tags,
               // isMyCard: props.isMyCard

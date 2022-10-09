@@ -24,9 +24,9 @@ function CardGroup(props: CardGroup) {
               key={ind}
               title={el.title}
               description={el.description}
-              numberOfVideosPerRequest={el.numberOfVideosPerRequest}
-              keyword={el.keyword}
-              sourceLinks={el.sourceLinks}
+              // numberOfVideosPerRequest={el.numberOfVideosPerRequest}
+              keywords={el.keywords}
+              // sourceLinks={el.sourceLinks}
             />
           );
         })}
@@ -34,7 +34,7 @@ function CardGroup(props: CardGroup) {
       <Link to={`/feed/configuration/add`}>
         <button
           className="custom-round-button"
-          style={{ position: "absolute", bottom: "100px", right: "100px" }}
+          style={{ position: "absolute", bottom: "80px", right: "3vw", zIndex: "7" }}
         >
           +
         </button>

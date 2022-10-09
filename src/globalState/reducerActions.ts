@@ -34,9 +34,9 @@ var initialState: Feed = {
     // averageRating: 1,
     // totalReviewCount: 1,
     description: '',
-    numberOfVideosPerRequest: 0,
-    sourceLinks: [""],
-    keyword: ""
+    // numberOfVideosPerRequest: 0,
+    // sourceLinks: [""],
+    keywords: []
     // visiiblity: "private",
     // tags: [""],
     // isMyCard: false
@@ -54,9 +54,9 @@ const currentDetailedPage = createSlice({
             // state.averageRating = action.payload.averageRating
             // state.totalReviewCount = action.payload.totalReviewCount
             state.description = action.payload.description
-            state.numberOfVideosPerRequest = action.payload.numberOfVideosPerRequest
-            state.sourceLinks = action.payload.sourceLinks
-            state.keyword = action.payload.keyword
+            // state.numberOfVideosPerRequest = action.payload.numberOfVideosPerRequest
+            // state.sourceLinks = action.payload.sourceLinks
+            state.keywords = action.payload.keywords
     
             // state.tags = action.payload.tags
             // state.visiiblity = action.payload.visiiblity
@@ -64,19 +64,11 @@ const currentDetailedPage = createSlice({
         }
     }
 })
+var initialStateMyFeeds: Feed[] = []
 
 const myFeeds = createSlice({
     name: "myFeeds",
-    initialState: [
-        {
-          id: 0,
-          title: "title",
-          description: "description",
-          numberOfVideosPerRequest: 1,
-          sourceLinks: ["link1", "link2"],
-          keyword: "keyword",
-        },
-      ],
+    initialState: initialStateMyFeeds,
       reducers: {
         addFeed(state, action: PayloadAction<Feed>){
             state.push(action.payload)
@@ -84,9 +76,9 @@ const myFeeds = createSlice({
         editFeed(state, action: PayloadAction<Feed>){
             const ind = state.findIndex(feed => feed.id === action.payload.id)
             state[ind].description = action.payload.description
-            state[ind].keyword = action.payload.keyword
-            state[ind].numberOfVideosPerRequest = action.payload.numberOfVideosPerRequest
-            state[ind].sourceLinks = action.payload.sourceLinks
+            state[ind].keywords = action.payload.keywords
+            // state[ind].numberOfVideosPerRequest = action.payload.numberOfVideosPerRequest
+            // state[ind].sourceLinks = action.payload.sourceLinks
             state[ind].title = action.payload.title
             state[ind].id = action.payload.id
         },

@@ -50,7 +50,7 @@ function App() {
         {
           path: "/feed/configuration/add",
           element: <ConfigurationPage action="add"/>
-        }
+        },
 
       ],
     },

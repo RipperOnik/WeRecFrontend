@@ -8,8 +8,13 @@ type Feed = {
     // visiiblity: "public" | "private",
     // tags: string[],
     // isMyCard: boolean
+    // numberOfVideosPerRequest: number,
+    keywords: Keyword[],
+    // sourceLinks: string[]
+}
+export type Keyword = {
+    keyword: string, 
     numberOfVideosPerRequest: number,
-    keyword: string,
     sourceLinks: string[]
 }
 
